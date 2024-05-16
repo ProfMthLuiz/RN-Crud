@@ -80,6 +80,30 @@ export default function Home({ route }) {
     }
   }
 
+  function renderItem({ item }) {
+    return (
+      <View
+        style={{
+          margin: 10,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ fontSize: 20, marginRight: 10 }}>{item.username}</Text>
+        <TouchableOpacity
+          style={{ marginRight: 10 }}
+          onPress={() => deleteUser(item.id)}
+        >
+          <Entypo name="trash" size={24} color="red" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => openEditModal(item)}>
+          <Entypo name="pencil" size={24} color="blue" />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   const openEditModal = (item) => {
     setSelectedUser(item); // Defina o usuário selecionado no estado
     setUser(item.username); // Defina o nome de usuário no estado
@@ -138,29 +162,7 @@ export default function Home({ route }) {
         <FlatList
           data={users}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View
-              style={{
-                margin: 10,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Text style={{ fontSize: 20, marginRight: 10 }}>
-                {item.username}
-              </Text>
-              <TouchableOpacity
-                style={{ marginRight: 10 }}
-                onPress={() => deleteUser(item.id)}
-              >
-                <Entypo name="trash" size={24} color="red" />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => openEditModal(item)}>
-                <Entypo name="pencil" size={24} color="blue" />
-              </TouchableOpacity>
-            </View>
-          )}
+          renderItem={renderItem}
         />
       </View>
 
