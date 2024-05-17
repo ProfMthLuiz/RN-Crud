@@ -12,7 +12,7 @@ import Login from "./src/pages/Login";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [userToken, setUserToken] = useState(true); // Inicialmente definido como null
+  const [userToken, setUserToken] = useState(true);
 
   useEffect(() => {
     checkToken();
@@ -30,7 +30,7 @@ export default function App() {
     try {
       await AsyncStorage.clear();
       console.log("AsyncStorage limpo com sucesso!");
-      setUserToken(true); // Após limpar o AsyncStorage, definir userToken como false para mostrar a tela de login
+      setUserToken(true);
     } catch (error) {
       console.log("Erro ao limpar AsyncStorage:", error);
     }
@@ -70,7 +70,7 @@ export default function App() {
         <Tab.Screen
           name="Home"
           component={Home}
-          initialParams={{ handleLogout: handleLogout }} // Passando handleLogout como initialParams
+          initialParams={{ handleLogout: handleLogout }}
           options={{
             tabBarIcon: ({ size, color }) => {
               return <FontAwesome size={size} color={color} name="home" />;
