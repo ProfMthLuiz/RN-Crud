@@ -26,8 +26,8 @@ db.connect((err) => {
 
 // Rota para criar usuário
 app.post("/api/createUser", (req, res) => {
-  const { username, password } = req.body; // Alterado de 'name' e 'email' para 'username' e 'password'
-  const query = "INSERT INTO Users (username, password) VALUES (?, ?)"; // Corrigido para 'username' e 'password'
+  const { username, password } = req.body;
+  const query = "INSERT INTO Users (username, password) VALUES (?, ?)"; 
   db.query(query, [username, password], (err, result) => {
     if (err) {
       console.error("Erro ao criar usuário:", err);
