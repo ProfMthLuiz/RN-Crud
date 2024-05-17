@@ -60,8 +60,8 @@ export default function Home({ route }) {
         `http://localhost:3000/api/updateUser/${selectedUser.id}`,
         { username: user, password }
       );
-      setVis(false); // Fechar o modal após a atualização
-      readUser(); // Recarregar a lista de usuários após a atualização
+      setVis(false);
+      readUser();
       alert("Usuário atualizado com sucesso");
       setUser("");
       setPassword("");
@@ -105,10 +105,10 @@ export default function Home({ route }) {
   }
 
   const openEditModal = (item) => {
-    setSelectedUser(item); // Defina o usuário selecionado no estado
-    setUser(item.username); // Defina o nome de usuário no estado
-    setPassword(item.password); // Defina a senha do usuário no estado
-    setVis(true); // Abra o modal de edição
+    setSelectedUser(item);
+    setUser(item.username); 
+    setPassword(item.password);
+    setVis(true);
   };
 
   return (
